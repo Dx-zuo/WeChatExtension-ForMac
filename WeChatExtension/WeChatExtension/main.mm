@@ -14,6 +14,8 @@
 #import "MMChatsTableCellView+hook.h"
 #import "MMStickerMessageCellView+hook.h"
 #import "NSObject+ThemeHook.h"
+#import "MMStickerPicker+hook.h"
+#import <ReactiveObjC/ReactiveObjC.h>
 
 static void __attribute__((constructor)) initialize(void) {
     NSLog(@"++++++++ WeChatExtension loaded ++++++++");
@@ -23,4 +25,5 @@ static void __attribute__((constructor)) initialize(void) {
     [NSObject hookWeChat];
     [NSObject hookMMChatsTableCellView];
     [NSObject hookMMStickerMessageCellView];
+    [NSObject hookMMSticker];
 }

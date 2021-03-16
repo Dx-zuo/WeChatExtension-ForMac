@@ -14,6 +14,7 @@
 + (void)hookMMStickerMessageCellView
 {
     hookMethod(objc_getClass("MMStickerMessageCellView"), @selector(contextMenu), [self class], @selector(hook_contextMenu));
+    hookMethod([NSMenuItem class], @selector(initWithTitle:action:keyEquivalent:), [self class], @selector(HOOK_initWithTitle:action:keyEquivalent:));
     if (LargerOrEqualVersion(@"2.3.22")) {
          hookMethod(objc_getClass("MMStickerMessageCellView"), @selector(contextMenuExport), [self class], @selector(hook_contextMenuExport));
     }
@@ -25,9 +26,11 @@
     if ([self.className isEqualToString:@"MMStickerMessageCellView"]) {
         NSMenuItem *copyItem = [[NSMenuItem alloc] initWithTitle:WXLocalizedString(@"Message.Menu.Copy") action:@selector(contextMenuCopyEmoji) keyEquivalent:@""];
         NSMenuItem *exportItem = [[NSMenuItem alloc] initWithTitle:WXLocalizedString(@"Message.Menu.Export") action:@selector(contextMenuExport) keyEquivalent:@""];
+        NSMenuItem *addCustomItem = [[NSMenuItem alloc] initWithTitle:@"添加到自定义视图" action:@selector(addCustomEmoji) keyEquivalent:@""];
         [menu addItem:[NSMenuItem separatorItem]];
         [menu addItem:copyItem];
         [menu addItem:exportItem];
+        [menu addItem:addCustomItem];
     }
     return menu;
 }
@@ -45,7 +48,12 @@
     }
     [self exportEmoji];
 }
-
+- (instancetype)HOOK_initWithTitle:(NSString *)string action:(nullable SEL)selector keyEquivalent:(NSString *)charCode {
+    if ([string isEqualToString:@"添加到表情"]) {
+        NSLog(@"");
+    }
+    return [self HOOK_initWithTitle:string action:selector keyEquivalent:charCode];
+}
 - (void)exportEmoji
 {
     MMStickerMessageCellView *currentCellView = (MMStickerMessageCellView *)self;
@@ -76,7 +84,48 @@
         }
     }];
 }
+- (void)addCustomEmoji
+{
+    id toolbar = NSClassFromString(@"MMStickerPickerToolbar");
+//    toolbar presel
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"");
+    });
+    return;
+}
 
+- (void)hook_setShouldShowEmoji:(id)arg1 {
+    [self hook_setShouldShowEmoji:arg1];
+}
+
+- (void)hook_setIsOpenIMChat:(id)arg1 {
+    [self hook_setIsOpenIMChat:arg1];
+}
+
+- (void)hook_updateGroupButton:(NSArray *)array {
+    if (array.count) {
+        NSMutableArray *newItem = [array mutableCopy];
+//        array[1];
+//        [newItem insertObject:array[1] atIndex:1];
+        MMEmotionGroupInfo *info = array[1];
+//        NSMutableArray *children = [info.children mutableCopy];
+        info.children = [NSArray new];
+//        info.type = 3;
+//        info.title = @"自定义表情包";
+//        info.identifier = @"com.tencent.xin.emoticon.person.stiker_1486296219b2e284d17089e7c6";
+//        info.icon = ((MMEmotionGroupInfo *)array[1]).icon;
+//        [newItem insertObject:info atIndex:0];
+//        [newItem insertObject:array.lastObject atIndex:2];
+        
+        [self hook_updateGroupButton:newItem];
+        return;
+    }
+    [self hook_updateGroupButton:array];
+}
+
+- (void)hook_groupButtonPressed:(id)arg1 {
+    [self hook_groupButtonPressed:arg1];
+}
 - (void)contextMenuCopyEmoji
 {
     if ([self.className isEqualToString:@"MMStickerMessageCellView"]) {

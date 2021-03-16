@@ -56,5 +56,7 @@ fi
 
 if [[ "$result" == 'y' ]]; then
     cp -r "${shell_path}/Plugin/WeChatExtension/${framework_name}.framework" ${app_bundle_path}
+    echo -e "$app_executable_path"
+    echo -e "$app_executable_backup_path"
     ${shell_path}/insert_dylib --all-yes "${framework_path}/${framework_name}" "$app_executable_backup_path" "$app_executable_path"
 fi

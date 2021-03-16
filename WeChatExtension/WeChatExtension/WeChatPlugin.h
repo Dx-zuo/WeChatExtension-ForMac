@@ -532,6 +532,11 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface EmoticonMgr : NSObject
 @property(retain, nonatomic) MessageData *message;
+@property(readonly) NSArray *emoticonGroupsForStickerPicker;
+@property(readonly) NSArray *emoticonGroupsForEmojiPicker;
+@property(readonly) NSArray *allEmoticonGroupsEmoji;
+@property(readonly) NSArray *allEmoticonGroupsWithoutEmoji;
+@property(readonly) NSArray *allEmoticonGroups;
 - (id)getEmotionDataWithMD5:(id)arg1;
 - (void)addFavEmoticon:(id)arg1;
 - (void)addEmoticonToUploadQueueWithMD5:(id)arg1;
@@ -1279,4 +1284,40 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) NSImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property(retain, nonatomic) NSTextField *titleTextField; // @synthesize titleTextField=_titleTextField;
 @property(retain, nonatomic) NSView *contentView; // @synthesize contentView=_contentView;
+@end
+
+@interface MMEmotionGroupInfo : NSObject
+@property(retain, nonatomic) NSString *panelUrl; // @synthesize panelUrl=_panelUrl;
+@property(retain, nonatomic) NSString *storeIconURL; // @synthesize storeIconURL=_storeIconURL;
+@property(retain, nonatomic) NSString *copyright; // @synthesize copyright=_copyright;
+@property(retain, nonatomic) NSString *fullDescription; // @synthesize fullDescription=_fullDescription;
+@property(retain, nonatomic) NSString *author; // @synthesize author=_author;
+@property(retain, nonatomic) NSString *introduction; // @synthesize introduction=_introduction;
+@property(nonatomic) BOOL shouldDisplayCaptions; // @synthesize shouldDisplayCaptions=_shouldDisplayCaptions;
+@property(retain, nonatomic) NSImage *icon; // @synthesize icon=_icon;
+@property(retain, nonatomic) NSArray *children; // @synthesize children=_children;
+@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+@property(nonatomic) int type; // @synthesize type=_type;
+@end
+
+@interface MMStickerCollectionViewController : NSViewController
+@end
+
+@interface MMStickerPickerEventView : MMView
+@end
+
+@interface MMStickerPicker : MMViewController
++ (id)sharedPicker;
+
+@property __weak MMStickerPickerEventView *stickerPickerView; // @synthesize stickerPickerView=_stickerPickerView;
+@property(retain, nonatomic) MMView *toolbarView; // @synthesize toolbarView=_toolbarView;
+@property(nonatomic) __weak MMStickerCollectionViewController *lastStickerCollectionViewController; // @synthesize lastStickerCollectionViewController=_lastStickerCollectionViewController;
+@property(retain, nonatomic) NSPopover *popover; // @synthesize popover=_popover;
+
+@end
+
+@interface MMStickerPickerToolbar : MMView
+@property(retain, nonatomic, getter=groupButtons) NSMutableArray *_groupButtons;
+
 @end

@@ -829,7 +829,7 @@
     if (runApps.count > 1) {
         return;
     }
-    
+    NSLog(@"打印 addSubView : %@", [[view class] debugDescription]);
     if ([view isKindOfClass:[objc_getClass("MMContactMgrButtonView") class]]) {
         for (NSView *sub in view.subviews) {
             if (![sub isKindOfClass:[NSTextField class]]) {
