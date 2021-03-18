@@ -1321,3 +1321,32 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic, getter=groupButtons) NSMutableArray *_groupButtons;
 
 @end
+
+@protocol MMCustomSearchFieldDelegate <NSObject>
+
+@optional
+- (BOOL)onSearchiledControl:(NSView *)arg1 aCommandSelector:(SEL)arg2;
+- (void)onSearchFiledDidEnd:(NSView *)arg1;
+- (void)onSearchFiledTextDidEndEditing:(NSView *)arg1 info:(NSNotification *)arg2;
+- (void)onSearchFiledTextDidChange:(NSView *)arg1;
+- (void)onSearchFiledWillBegin:(NSView *)arg1;
+@end
+
+@interface MMCustomSearchField : NSView
+@property(retain, nonatomic) CAShapeLayer *borderLayer; // @synthesize borderLayer=_borderLayer;
+@property(retain, nonatomic) CAShapeLayer *maskLayer; // @synthesize maskLayer=_maskLayer;
+@property(nonatomic) BOOL isHighlight; // @synthesize isHighlight=_isHighlight;
+@property(retain, nonatomic) SVGButton *closeButton; // @synthesize closeButton=_closeButton;
+@property(nonatomic) __weak id <MMCustomSearchFieldDelegate> delegate; // @synthesize delegate=_delegate;
+//@property(retain, nonatomic) MMPlaceholderContainerView *placeholderContainerView; // @synthesize placeholderContainerView=_placeholderContainerView;
+@property(nonatomic) BOOL searching; // @synthesize searching=_searching;
+@property(nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property(retain, nonatomic) NSAttributedString *placeholderAttributedString; // @synthesize placeholderAttributedString=_placeholderAttributedString;
+@property(retain, nonatomic) NSString *placeholderString; // @synthesize placeholderString=_placeholderString;
+@property(retain, nonatomic) NSColor *hightlightBackgroudColor; // @synthesize hightlightBackgroudColor=_hightlightBackgroudColor;
+@property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(retain, nonatomic) NSColor *highlightBorderColor; // @synthesize highlightBorderColor=_highlightBorderColor;
+@property(retain, nonatomic) NSColor *borderColor; // @synthesize borderColor=_borderColor;
+
+@end

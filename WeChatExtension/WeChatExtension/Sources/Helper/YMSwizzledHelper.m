@@ -37,7 +37,14 @@ void hookMethod(Class originalClass, SEL originalSelector, Class swizzledClass, 
 void hookClassMethod(Class originalClass, SEL originalSelector, Class swizzledClass, SEL swizzledSelector) {
     Method originalMethod = class_getClassMethod(originalClass, originalSelector);
     Method swizzledMethod = class_getClassMethod(swizzledClass, swizzledSelector);
-    if (originalMethod && swizzledMethod) {
+    
+    BOOL isAddedMethod = class_addMethod(originalClass, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+    if (isAddedMethod) {
+        // 如果 class_addMethod 成功了，说明之前 originalClass 里并不存在 originalSelector，所以要用一个空的方法代替它，以避免 class_replaceMethod 后，后续 swizzledClass 的这个方法被调用时可能会 crash
+        IMP oriMethodIMP = method_getImplementation(originalMethod) ?: imp_implementationWithBlock(^(id selfObject) {});
+        const char *oriMethodTypeEncoding = method_getTypeEncoding(originalMethod) ?: "v@:";
+        class_replaceMethod(swizzledClass, swizzledSelector, oriMethodIMP, oriMethodTypeEncoding);
+    } else {
         method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }

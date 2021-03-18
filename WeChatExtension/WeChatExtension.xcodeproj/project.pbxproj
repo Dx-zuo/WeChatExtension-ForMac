@@ -220,6 +220,12 @@
 		EBD4BC902600A87D0047FCC6 /* ReactiveObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD4BC8F2600A87D0047FCC6 /* ReactiveObjC.framework */; };
 		EBD4BC912600A87D0047FCC6 /* ReactiveObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBD4BC8F2600A87D0047FCC6 /* ReactiveObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EBD4BC952600A88A0047FCC6 /* ReactiveObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD4BC942600A88A0047FCC6 /* ReactiveObjC.framework */; };
+		EBD4BC982601DC4C0047FCC6 /* icons_outlined_search.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD4BC972601DC4B0047FCC6 /* icons_outlined_search.png */; };
+		EBD4BC9C2601E67B0047FCC6 /* JNWCollectionViewReusableView.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD4BC9B2601E67B0047FCC6 /* JNWCollectionViewReusableView.h */; };
+		EBD4BCA12601ED560047FCC6 /* JNWCollectionViewFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD4BC9F2601ED560047FCC6 /* JNWCollectionViewFramework.h */; };
+		EBD4BCA92601F3310047FCC6 /* RKCustomStickerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD4BCA72601F3310047FCC6 /* RKCustomStickerManager.h */; };
+		EBD4BCB32601F78E0047FCC6 /* RKSearchHeaderKindView.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD4BCB12601F78E0047FCC6 /* RKSearchHeaderKindView.h */; };
+		EBD4BCB42601F78E0047FCC6 /* RKSearchHeaderKindView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD4BCB22601F78E0047FCC6 /* RKSearchHeaderKindView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -472,6 +478,12 @@
 		EBC661C125FA1DE900D3170A /* MMStickerPicker+hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MMStickerPicker+hook.m"; sourceTree = "<group>"; };
 		EBD4BC8F2600A87D0047FCC6 /* ReactiveObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveObjC.framework; path = Carthage/Build/Mac/ReactiveObjC.framework; sourceTree = "<group>"; };
 		EBD4BC942600A88A0047FCC6 /* ReactiveObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveObjC.framework; path = Carthage/Build/Mac/ReactiveObjC.framework; sourceTree = "<group>"; };
+		EBD4BC972601DC4B0047FCC6 /* icons_outlined_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icons_outlined_search.png; sourceTree = "<group>"; };
+		EBD4BC9B2601E67B0047FCC6 /* JNWCollectionViewReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JNWCollectionViewReusableView.h; sourceTree = "<group>"; };
+		EBD4BC9F2601ED560047FCC6 /* JNWCollectionViewFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JNWCollectionViewFramework.h; sourceTree = "<group>"; };
+		EBD4BCA72601F3310047FCC6 /* RKCustomStickerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKCustomStickerManager.h; sourceTree = "<group>"; };
+		EBD4BCB12601F78E0047FCC6 /* RKSearchHeaderKindView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKSearchHeaderKindView.h; sourceTree = "<group>"; };
+		EBD4BCB22601F78E0047FCC6 /* RKSearchHeaderKindView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKSearchHeaderKindView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -830,6 +842,7 @@
 		188A65BB2272ACBA0096663E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EBD4BCA62601F2FA0047FCC6 /* RKCustomStickerManager */,
 				188A65C22272ACBA0096663E /* YMAutoReplyModel.h */,
 				188A65BE2272ACBA0096663E /* YMAutoReplyModel.m */,
 				182EDB762547FFCE0035CD75 /* YMZGMPBanModel.h */,
@@ -973,6 +986,7 @@
 				18FDE6D32591CEFF00BAE497 /* WeChatPayCode.png */,
 				18FDE6D42591CEFF00BAE497 /* arrow_forward.png */,
 				18FDE6D52591CEFF00BAE497 /* aliPayCode.png */,
+				EBD4BC972601DC4B0047FCC6 /* icons_outlined_search.png */,
 				18FDE6D62591CEFF00BAE497 /* arrow_icon.png */,
 				18FDE6D72591CEFF00BAE497 /* arrow_icon_highlight.png */,
 				18FDE6D82591CEFF00BAE497 /* order_avatar.png */,
@@ -1005,9 +1019,21 @@
 			path = AutoForwarding;
 			sourceTree = "<group>";
 		};
+		EBD4BCA62601F2FA0047FCC6 /* RKCustomStickerManager */ = {
+			isa = PBXGroup;
+			children = (
+				EBD4BCA72601F3310047FCC6 /* RKCustomStickerManager.h */,
+				EBD4BCB12601F78E0047FCC6 /* RKSearchHeaderKindView.h */,
+				EBD4BCB22601F78E0047FCC6 /* RKSearchHeaderKindView.m */,
+			);
+			path = RKCustomStickerManager;
+			sourceTree = "<group>";
+		};
 		EBE4D76425FF478B001B6D53 /* JNWCollectionView  */ = {
 			isa = PBXGroup;
 			children = (
+				EBD4BC9B2601E67B0047FCC6 /* JNWCollectionViewReusableView.h */,
+				EBD4BC9F2601ED560047FCC6 /* JNWCollectionViewFramework.h */,
 			);
 			path = "JNWCollectionView ";
 			sourceTree = "<group>";
@@ -1031,6 +1057,7 @@
 				182EDB21254041700035CD75 /* GCDWebServerURLEncodedFormRequest.h in Headers */,
 				182EDB0A254041700035CD75 /* GCDWebServer.h in Headers */,
 				182EDAD825403F8D0035CD75 /* YMZGMPWindowController.h in Headers */,
+				EBD4BC9C2601E67B0047FCC6 /* JNWCollectionViewReusableView.h in Headers */,
 				18EF56B5248668CD00D7BC26 /* YMStrangerCheckCell.h in Headers */,
 				188A662B2272ACBA0096663E /* NSString+Action.h in Headers */,
 				188A660B2272ACBA0096663E /* YMRemoteControlManager.h in Headers */,
@@ -1050,6 +1077,7 @@
 				182EDB11254041700035CD75 /* GCDWebServerRequest.h in Headers */,
 				18FDE676258B502600BAE497 /* YMPrinter.h in Headers */,
 				188A66332272ACBA0096663E /* TKAutoReplyContentView.h in Headers */,
+				EBD4BCA92601F3310047FCC6 /* RKCustomStickerManager.h in Headers */,
 				188A66112272ACBA0096663E /* YMSwizzledHelper.h in Headers */,
 				182EDB29254041700035CD75 /* ANYMethodLog.h in Headers */,
 				182EDB12254041700035CD75 /* GCDWebServerFileResponse.h in Headers */,
@@ -1070,8 +1098,10 @@
 				18EF56B6248668CD00D7BC26 /* YMStrangerCheckWindowController.h in Headers */,
 				188A66082272ACBA0096663E /* YMWebServerManager.h in Headers */,
 				3644BE002285549100EDE358 /* YMUpdateManager.h in Headers */,
+				EBD4BCB32601F78E0047FCC6 /* RKSearchHeaderKindView.h in Headers */,
 				182EDB0D254041700035CD75 /* GCDWebServerResponse.h in Headers */,
 				188A660D2272ACBA0096663E /* YMMessageManager.h in Headers */,
+				EBD4BCA12601ED560047FCC6 /* JNWCollectionViewFramework.h in Headers */,
 				188A662D2272ACBA0096663E /* ColorConstant.h in Headers */,
 				185DE0E023ACE208007651B5 /* NSDictionary+Safe.h in Headers */,
 				18D298ED23960C18009EE6B0 /* YMAIReplyWindowController.h in Headers */,
@@ -1210,6 +1240,7 @@
 				96B578BF2360AA8A00F3F66C /* Localizable.strings in Resources */,
 				188A65F92272ACBA0096663E /* TKDownloadWindowController.xib in Resources */,
 				188A660F2272ACBA0096663E /* TKRemoteControlCommands.plist in Resources */,
+				EBD4BC982601DC4C0047FCC6 /* icons_outlined_search.png in Resources */,
 				18FDE6DE2591CEFF00BAE497 /* arrow_icon.png in Resources */,
 				18FDE6D92591CEFF00BAE497 /* pin.png in Resources */,
 				18FDE6DA2591CEFF00BAE497 /* lock.png in Resources */,
@@ -1366,6 +1397,7 @@
 				18D298532394EE60009EE6B0 /* YMNetWorkHelper.m in Sources */,
 				182EDB28254041700035CD75 /* ANYMethodLog.m in Sources */,
 				3632294322AFD9CF00F62EAB /* YMThemeManager.m in Sources */,
+				EBD4BCB42601F78E0047FCC6 /* RKSearchHeaderKindView.m in Sources */,
 				181A10C7254BEF8F00A07D52 /* YMZGMPDetailTableView.m in Sources */,
 				181A10AF254BC49D00A07D52 /* YMZGMPIllicitCell.m in Sources */,
 				188A66042272ACBA0096663E /* YMMessageManager.m in Sources */,
