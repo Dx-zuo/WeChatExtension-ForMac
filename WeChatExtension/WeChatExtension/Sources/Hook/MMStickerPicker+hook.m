@@ -12,6 +12,7 @@
 #import <ReactiveObjC/ReactiveObjC.h>
 #import "JNWCollectionViewReusableView.h"
 #import "JNWCollectionViewFramework.h"
+#import "RKSearchHeaderKindView.h"
 @implementation NSObject (MMStickerPicker)
 
 + (void)hookMMSticker {
@@ -95,14 +96,9 @@
 
 - (JNWCollectionViewReusableView *)collectionView:(NSView *)collectionView viewForSupplementaryViewOfKind:(NSString *)kind inSection:(NSInteger)section {
     JNWCollectionViewReusableView *view = [[objc_getClass("JNWCollectionViewReusableView") alloc] initWithFrame:NSMakeRect(0, 0, collectionView.width, 56.0f)];
-    MMCustomSearchField *text = [[objc_getClass("MMCustomSearchField") class] new];
-    [view addSubview:text];
-    [text addConstraint:NSLayoutAttributeWidth sibling:view attribute:NSLayoutAttributeWidth constant:-30];
-    [text addConstraint:NSLayoutAttributeHeight sibling:view attribute:NSLayoutAttributeHeight constant:-30];
-
-    [text addConstraint:NSLayoutAttributeCenterX sibling:view attribute:NSLayoutAttributeCenterX constant:0];
-    [text addConstraint:NSLayoutAttributeCenterY sibling:view attribute:NSLayoutAttributeCenterY constant:0];
-
+    RKSearchHeaderKindView *searchHeaderKindView = [[RKSearchHeaderKindView alloc] init];
+    searchHeaderKindView.frame = view.frame;
+    [view addSubview:searchHeaderKindView];
     return view;
 }
 

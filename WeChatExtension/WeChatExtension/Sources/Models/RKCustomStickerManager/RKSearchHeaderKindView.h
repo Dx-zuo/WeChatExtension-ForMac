@@ -10,7 +10,12 @@
 #import "JNWCollectionViewReusableView.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RKSearchHeaderKindView : NSView
+@interface RKSearchHeaderKindView : NSView <MMCustomSearchFieldDelegate>
+
+@property (nonatomic) MMCustomSearchField *searchField;
+
+@property (nonatomic) NSArray* searchRecords;
+
 
 @end
 
